@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "user")
+@Table
 public class User {
 
     @Id
@@ -15,6 +15,14 @@ public class User {
     private String login;
     @NotNull
     private String password;
+
+    public User() {
+    }
+
+    public User(@NotNull String login, @NotNull String password) {
+        this.login = login;
+        this.password = password;
+    }
 
     public int getId() {
         return id;
