@@ -8,18 +8,15 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class JSONWriter {
 
+    public static List<Beer> Json() {
+        String sUrl = "https://api.punkapi.com/v2/beers";
+        List<Beer> piwa = new ArrayList<>();
 
-//    String sUrl = "https://api.punkapi.com/v2/beers";
-//
-//    {
-//        Json(sUrl);
-//    }
-
-    public static void Json(String sUrl) {
         try {
             Client client = Client.create();
             WebResource webResource = client.resource(sUrl);
@@ -42,11 +39,13 @@ public class JSONWriter {
                 System.out.println(piwo.getImageUrl());
                 System.out.println(piwo.getIbu());
                 System.out.println(piwo.getFoodPairing());
-//                return piwo;
+                if (true) {
+                    piwa.add(new Beer(piwo.getId(), piwo.getName(), piwo.getTagline(), piwo.getFirstBrewed(), piwo.getDescription(), piwo.getImageUrl(), piwo.getIbu(), piwo.getFoodPairing()));
+                } else return piwa;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return piwa;
     }
 }

@@ -110,4 +110,5 @@ public class Beer {
     public void setFoodPairing(List<String> foodPairing) {
         this.foodPairing = foodPairing;
     }
+
 }
