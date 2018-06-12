@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collection;
+import javax.ws.rs.POST;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -29,8 +30,13 @@ public class BeerController {
     }
 
     @RequestMapping(value = "/all/{id}")
-    public Beer findAllbyID(Integer id) {
-        return beerRepository.findById(id);
+    public Beer findAllbyID(@PathVariable Integer id) {
+        return beerRepository.findBeerById(id);
+    }
+
+    @RequestMapping(value = "/foodpairings/search/{phrase}")
+    public Beer findFoodParrings(@PathVariable String phrase) {
+        return beerRepository.findBeerByFoodPairing(phrase);
     }
 
     @RequestMapping("/allBeer")
@@ -43,4 +49,10 @@ public class BeerController {
         return BeerService.getBeerID(id);
     }
 
+    @POST
+    @RequestMapping("/save")
+    public Beer saveBeer() {
+        Beer cos = new Beer(12, "", "", "", "", "", 12, Arrays.asList("dupa", "zupa"));
+        return beerRepository.save(cos);
+    }
 }

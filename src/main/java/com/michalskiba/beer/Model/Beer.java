@@ -4,6 +4,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,28 +15,22 @@ public class Beer {
     @NotNull
     @Id
     private Integer id;
-    @NotNull
     private String name;
-    @NotNull
     private String tagline;
-    @NotNull
     private String firstBrewed;
-    @NotNull
     private String description;
-    @NotNull
     private String imageUrl;
-    @NotNull
     private Integer ibu;
     @ElementCollection
     @CollectionTable(name = "FOODPARING")
     @OrderColumn
     @Column(name = "FOOD")
-    private List<String> foodPairing = null;
+    private List<String> foodPairing = new ArrayList<>();
 
     public Beer() {
     }
 
-    public Beer(@NotNull Integer id, @NotNull String name, @NotNull String tagline, @NotNull String firstBrewed, @NotNull String description, @NotNull String imageUrl, @NotNull Integer ibu, List<String> foodPairing) {
+    public Beer(@NotNull Integer id, String name, String tagline, String firstBrewed, String description, String imageUrl, Integer ibu, List<String> foodPairing) {
         this.id = id;
         this.name = name;
         this.tagline = tagline;
@@ -45,6 +40,7 @@ public class Beer {
         this.ibu = ibu;
         this.foodPairing = foodPairing;
     }
+
 
     public Integer getId() {
         return id;
