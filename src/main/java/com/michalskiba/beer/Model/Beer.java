@@ -1,6 +1,5 @@
 package com.michalskiba.beer.Model;
 
-import jdk.nashorn.internal.objects.annotations.Setter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.*;
@@ -36,7 +35,7 @@ public class Beer {
     public Beer() {
     }
 
-    public Beer(@NotNull Integer id, @NotNull String name, @NotNull String tagline, @NotNull String firstBrewed, @NotNull String description, @NotNull String imageUrl, @NotNull Integer ibu,  List<String> foodPairing) {
+    public Beer(@NotNull Integer id, @NotNull String name, @NotNull String tagline, @NotNull String firstBrewed, @NotNull String description, @NotNull String imageUrl, @NotNull Integer ibu, List<String> foodPairing) {
         this.id = id;
         this.name = name;
         this.tagline = tagline;

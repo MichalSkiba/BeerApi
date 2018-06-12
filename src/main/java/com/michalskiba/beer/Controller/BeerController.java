@@ -8,38 +8,39 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
 public class BeerController {
 
-    private final BeerRepository beerRepository;
-
     @Autowired
-    private BeerService beerService;
-
-    @Autowired
-    public BeerController(BeerRepository beerRepository) {
-        this.beerRepository = beerRepository;
-    }
+    private BeerRepository beerRepository;
 
     @RequestMapping("/index")
     public String pokazStrone() {
         return "index";
     }
 
-    @RequestMapping ("/all")
+
+    @RequestMapping(value = "/all")
     public List<Beer> findAll() {
         return beerRepository.findAll();
     }
 
-    @RequestMapping ("/allBeer")
+    @RequestMapping(value = "/all/{id}")
+    public Beer findAllbyID(Integer id) {
+        return beerRepository.findById(id);
+    }
+
+    @RequestMapping("/allBeer")
     public List<Beer> getBeerList() {
         return BeerService.getBeerList();
     }
 
-    @RequestMapping ("/allBeer/{id}")
+    @RequestMapping("/allBeer/{id}")
     public Beer getBeerList(@PathVariable Integer id) {
         return BeerService.getBeerID(id);
     }
+
 }

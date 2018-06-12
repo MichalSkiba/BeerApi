@@ -11,15 +11,15 @@ import java.util.List;
 @Service("beerService")
 public class BeerService {
 
-   @Autowired
+    @Autowired
     private BeerRepository beerRepository;
-
 
     public static List<Beer> getBeerList() {
         return JSONWriter.Json();
     }
 
-    public static Beer getBeerID(Integer id){
+    public static Beer getBeerID(Integer id) {
         return JSONWriter.Json().stream().filter(beer -> beer.getId().equals(id)).findFirst().get();
     }
+
 }
