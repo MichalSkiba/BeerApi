@@ -1,15 +1,14 @@
 package com.michalskiba.beer.Model;
 
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
-@EnableTransactionManagement
-@Table
 public class Beer {
 
     @NotNull
@@ -18,9 +17,12 @@ public class Beer {
     private String name;
     private String tagline;
     private String firstBrewed;
+    @Column(length = 1000)
     private String description;
     private String imageUrl;
     private Integer ibu;
+
+    @Embedded
     @ElementCollection
     @CollectionTable(name = "FOODPARING")
     @OrderColumn
@@ -40,7 +42,6 @@ public class Beer {
         this.ibu = ibu;
         this.foodPairing = foodPairing;
     }
-
 
     public Integer getId() {
         return id;
