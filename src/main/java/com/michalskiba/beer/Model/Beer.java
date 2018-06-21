@@ -1,17 +1,16 @@
 package com.michalskiba.beer.Model;
 
-import lombok.Data;
+import org.springframework.stereotype.Indexed;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @Entity
-public class Beer {
+@Indexed
+public class Beer  {
 
-    @NotNull
+
     @Id
     private Integer id;
     private String name;
@@ -24,15 +23,15 @@ public class Beer {
 
     @Embedded
     @ElementCollection
-    @CollectionTable(name = "FOODPARING")
+    @CollectionTable(name = "FOOD")
     @OrderColumn
-    @Column(name = "FOOD")
-    private List<String> foodPairing = new ArrayList<>();
+    @Column(name = "BEER")
+    private List<String> foodPairing = new ArrayList<String>();
 
     public Beer() {
     }
 
-    public Beer(@NotNull Integer id, String name, String tagline, String firstBrewed, String description, String imageUrl, Integer ibu, List<String> foodPairing) {
+    public Beer(Integer id, String name, String tagline, String firstBrewed, String description, String imageUrl, Integer ibu, List<String> foodPairing) {
         this.id = id;
         this.name = name;
         this.tagline = tagline;
@@ -107,4 +106,17 @@ public class Beer {
         this.foodPairing = foodPairing;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tagline='" + tagline + '\'' +
+                ", firstBrewed='" + firstBrewed + '\'' +
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", ibu=" + ibu +
+                ", foodPairing=" + foodPairing +
+                '}';
+    }
 }

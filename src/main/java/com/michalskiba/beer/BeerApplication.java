@@ -26,16 +26,18 @@ public class BeerApplication {
     CommandLineRunner runner(BeerService beerService) {
         return args -> {
             // read json and write to db
+
             ObjectMapper mapper = new ObjectMapper();
             TypeReference<List<Beer>> typeReference = new TypeReference<List<Beer>>() {
             };
             InputStream inputStream = TypeReference.class.getResourceAsStream("/json/beer.json");
+//            InputStream inputStream = TypeReference.class.getResourceAsStream("c:/test.json");
             try {
-                List<Beer> users = mapper.readValue(inputStream, typeReference);
-                beerService.save(users);
-                System.out.println("Users Saved!");
+                List<Beer> beers = mapper.readValue(inputStream, typeReference);
+                beerService.save(beers);
+                System.out.println("Beer Saved!");
             } catch (IOException e) {
-                System.out.println("Unable to save users: " + e.getMessage());
+                System.out.println("Unable to save beers: " + e.getMessage());
             }
         };
     }

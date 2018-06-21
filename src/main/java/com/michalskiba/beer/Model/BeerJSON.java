@@ -136,4 +136,19 @@ public class BeerJSON {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tagline='" + tagline + '\'' +
+                ", firstBrewed='" + firstBrewed + '\'' +
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", ibu=" + ibu +
+                ", foodPairing=" + foodPairing +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

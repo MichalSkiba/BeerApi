@@ -4,17 +4,21 @@ import com.michalskiba.beer.Model.Beer;
 import com.michalskiba.beer.Repository.BeerRepository;
 import com.michalskiba.beer.services.BeerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.ws.rs.POST;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-import static com.michalskiba.beer.services.BeerService.getBeerID;
-
-@RestController
+@Controller
+@ResponseBody
 public class BeerController {
+
 
     @Autowired
     BeerRepository beerRepository;
@@ -23,19 +27,9 @@ public class BeerController {
     BeerService beerService;
 
     @GetMapping("/list")
-    public Iterable<Beer> list(){
+    public Iterable<Beer> list() {
         return beerService.list();
     }
-
-    @RequestMapping("/index")
-    public String pokazStrone() {
-        return "index";
-    }
-
-//    @PostMapping("/beerSave")
-//    public Beer createBeer(@Valid @RequestBody Beer beer) {
-//        return beerService.save(beer);
-//    }
 
     @RequestMapping(value = "/all")
     public List<Beer> findAll() {
@@ -47,25 +41,15 @@ public class BeerController {
         return beerRepository.findBeerById(id);
     }
 
-    @RequestMapping(value = "/foodpairings/search/{phrase}")
-    public Beer findFoodParrings(@PathVariable String phrase) {
-        return beerRepository.findBeerByFoodPairing(phrase);
+    @RequestMapping(value = "/food/{food}")
+    public List<Beer> findFoodPairings(@PathVariable String food) {
+        return beerService.findFoodParing(food);
     }
 
-    @RequestMapping("/allBeer")
-    public List<Beer> getBeerList() {
-        return BeerService.getBeerList();
+    @POST
+    @RequestMapping("/save")
+    public Beer saveBeer() {
+        Beer cos = new Beer(120, "", "", "", "", "", 12,Arrays.asList("zupa", "dupa"));
+        return beerRepository.save(cos);
     }
-
-    @RequestMapping("/allBeer/{id}")
-    public Beer getBeerList(@PathVariable Integer id) {
-        return getBeerID(id);
-    }
-
-//    @POST
-//    @RequestMapping("/save")
-//    public Beer saveBeer() {
-//        Beer cos = new Beer(12, "", "", "", "", "", 12, Arrays.asList("dupa", "zupa"));
-//        return beerRepository.save(cos);
-//    }
 }
