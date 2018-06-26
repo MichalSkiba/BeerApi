@@ -8,8 +8,7 @@ import java.util.List;
 
 @Entity
 @Indexed
-public class Beer  {
-
+public class Beer {
 
     @Id
     private Integer id;
@@ -24,9 +23,8 @@ public class Beer  {
     @Embedded
     @ElementCollection
     @CollectionTable(name = "FOOD")
-    @OrderColumn
-    @Column(name = "BEER")
-    private List<String> foodPairing = new ArrayList<String>();
+
+    private List<String> foodPairing = new ArrayList<>();
 
     public Beer() {
     }

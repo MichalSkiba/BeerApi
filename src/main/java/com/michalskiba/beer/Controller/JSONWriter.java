@@ -17,6 +17,7 @@ public class JSONWriter {
 
         List<Beer> piwa = new ArrayList<>();
 
+
         try {
             Client client = Client.create();
             WebResource webResource = client.resource("https://api.punkapi.com/v2/beers");
@@ -31,18 +32,25 @@ public class JSONWriter {
             BeerJSON[] beer = mapper.readValue(bazaJson, BeerJSON[].class);
 
             for (BeerJSON piwo : beer) {
-//                System.out.println("---------------------------------------------------------------------");
-//                System.out.println(piwo.getId());
-//                System.out.println(piwo.getName());
-//                System.out.println(piwo.getTagline());
-//                System.out.println(piwo.getFirstBrewed());
-//                System.out.println(piwo.getDescription());
-//                System.out.println(piwo.getImageUrl());
-//                System.out.println(piwo.getIbu());
-//                System.out.println(piwo.getFoodPairing());
+                System.out.println("---------------------------------------------------------------------");
+                System.out.println(piwo.getId());
+                System.out.println(piwo.getName());
+                System.out.println(piwo.getTagline());
+                System.out.println(piwo.getFirstBrewed());
+                System.out.println(piwo.getDescription());
+                System.out.println(piwo.getImageUrl());
+                System.out.println(piwo.getIbu());
+                System.out.println(piwo.getFoodPairing());
 
                 if (true) {
-                    piwa.add(new Beer(piwo.getId(), piwo.getName(), piwo.getTagline(), piwo.getFirstBrewed(), piwo.getDescription(), piwo.getImageUrl(), piwo.getIbu(),piwo.getFoodPairing()));
+                    piwa.add(new Beer(piwo.getId(),
+                            piwo.getName(),
+                            piwo.getTagline(),
+                            piwo.getFirstBrewed(),
+                            piwo.getDescription(),
+                            piwo.getImageUrl(),
+                            piwo.getIbu(),
+                            piwo.getFoodPairing()));
                 } else return piwa;
             }
         } catch (IOException e) {

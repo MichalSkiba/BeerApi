@@ -4,7 +4,6 @@ import com.michalskiba.beer.Model.Beer;
 import com.michalskiba.beer.Repository.BeerRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,10 +25,8 @@ public class BeerService {
     }
 
     public List<Beer> findFoodParing(String food) {
-       List<Beer> beerList =  beerRepository.findAll().stream().filter(beer -> beer.getFoodPairing().contains(food)).collect(Collectors.toList());
+        List<Beer> beerList = beerRepository.findAll().stream().filter(beer -> beer.getFoodPairing().contains(food)).collect(Collectors.toList());
 //                .forEach(System.out::println);
         return beerList;
     }
-
-
 }

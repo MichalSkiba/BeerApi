@@ -1,18 +1,18 @@
 package com.michalskiba.beer.Repository;
 
 import com.michalskiba.beer.Controller.JSONWriter;
-import com.michalskiba.beer.Model.Beer;
+import com.michalskiba.beer.Model.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("beerRepository")
-public interface BeerRepository extends JpaRepository<Beer, Long> {
+@Repository("foodRepository")
+public interface FoodRepository extends JpaRepository<Food, Long> {
 
-    List<Beer> findAll();
+    List<Food> findAll();
 
-    Beer findBeerById(Integer id);
+    Food findFoodByValue(String food);
 
     public static void main(String[] args) {
 

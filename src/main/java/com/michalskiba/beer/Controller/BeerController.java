@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.ws.rs.POST;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 @Controller
 @ResponseBody
+
 public class BeerController {
 
 
@@ -49,7 +50,7 @@ public class BeerController {
     @POST
     @RequestMapping("/save")
     public Beer saveBeer() {
-        Beer cos = new Beer(120, "", "", "", "", "", 12,Arrays.asList("zupa", "dupa"));
+        Beer cos = new Beer(120, "", "", "", "", "", 12, asList("zupa", "dupa"));
         return beerRepository.save(cos);
     }
 }
