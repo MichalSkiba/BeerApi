@@ -1,6 +1,5 @@
 package com.michalskiba.beer.Controller;
 
-import com.michalskiba.beer.Model.Beer;
 import com.michalskiba.beer.Model.Food;
 import com.michalskiba.beer.Repository.FoodRepository;
 import com.michalskiba.beer.services.FoodService;

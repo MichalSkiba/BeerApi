@@ -47,6 +47,11 @@ public class BeerController {
         return beerService.findFoodParing(food);
     }
 
+    @RequestMapping(value = "/fo/{food}")
+    public List<Beer> findFoodBeer(@PathVariable String food) {
+        return beerService.findBeerbyFood(food);
+    }
+
     @POST
     @RequestMapping("/save")
     public Beer saveBeer() {

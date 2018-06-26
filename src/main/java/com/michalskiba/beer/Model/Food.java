@@ -2,7 +2,10 @@ package com.michalskiba.beer.Model;
 
 import org.springframework.stereotype.Indexed;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Indexed
@@ -45,6 +48,14 @@ public class Food {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "beer_id=" + beer_id +
+                ", value='" + value + '\'' +
+                '}';
     }
 }
 

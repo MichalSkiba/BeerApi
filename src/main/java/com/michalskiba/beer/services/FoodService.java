@@ -1,6 +1,5 @@
 package com.michalskiba.beer.services;
 
-import com.michalskiba.beer.Model.Beer;
 import com.michalskiba.beer.Model.Food;
 import com.michalskiba.beer.Repository.FoodRepository;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ public class FoodService {
     }
 
     public List<Food> findFoodValue(String food) {
-        List<Food> foodList =  foodRepository.findAll().stream().filter(f -> f.getValue().contains(food)).collect(Collectors.toList());
+        List<Food> foodList = foodRepository.findAll().stream().filter(f -> (f.getValue()).contains(food)).collect(Collectors.toList());
 //                .forEach(System.out::println);
         return foodList;
     }
