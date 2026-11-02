@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.ws.rs.POST;
+import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -52,8 +52,7 @@ public class BeerController {
         return beerService.findBeerbyFood(food);
     }
 
-    @POST
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public Beer saveBeer() {
         Beer cos = new Beer(120, "", "", "", "", "", 12, asList("zupa", "dupa"));
         return beerRepository.save(cos);

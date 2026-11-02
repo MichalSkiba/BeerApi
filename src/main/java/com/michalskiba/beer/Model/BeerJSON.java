@@ -2,7 +2,7 @@ package com.michalskiba.beer.Model;
 
 import com.fasterxml.jackson.annotation.*;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
