@@ -2,10 +2,11 @@ package com.michalskiba.beer.Model;
 
 import org.springframework.stereotype.Indexed;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
 @Entity
 @Indexed
@@ -15,10 +16,11 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer beer_id;
+    @Column(name = "food_value")
     private String value;
     private Integer hash;
 
-    Food() {
+    protected Food() {
     }
 
     public Food(Integer beer_id, String value) {

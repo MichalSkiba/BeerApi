@@ -1,10 +1,10 @@
 package com.michalskiba.beer.Model;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table
+@Table(name = "app_user")
 public class User {
 
     @Id

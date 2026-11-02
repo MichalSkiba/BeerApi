@@ -2,7 +2,7 @@ package com.michalskiba.beer.Model;
 
 import org.springframework.stereotype.Indexed;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +20,6 @@ public class Beer {
     private String imageUrl;
     private Integer ibu;
 
-    @Embedded
     @ElementCollection
     @CollectionTable(name = "FOOD")
 
